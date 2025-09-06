@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · Jaswanth Selvam</title><link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="header"><div class="container topbar">
+  <a class="brand" href="index.html" aria-label="Jaswanth Selvam">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.5 7H22l-6 4.5L18 21l-6-4-6 4 2-7.5L2 9h6.5L12 2z" stroke="url(#g)" stroke-width="1.3" fill="none"/><defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs></svg>
+    <span>Jaswanth Selvam</span>
+  </a>
+  <nav><a href="index.html" class="">Home</a>
+      <a href="about.html" class="">About</a>
+      <a href="videos.html" class="">Videos</a>
+      <a href="gallery.html" class="">Gallery</a>
+      <a href="inspirations.html" class="">Inspirations</a>
+      <a href="contact.html" class="active">Contact</a></nav>
+</div></header>
+<main class="container">
+<section class="card"><h2>Contact Me</h2><p>Send a message (parents supervise replies for safety).</p>
+  <div class="note">Works on PHP hosting (e.g., Hostinger). If you use a static host (Vercel/Netlify), see the README for a Formspree option.</div></section>
+<section class="card">
+  <form method="POST" action="contact.php">
+    <label for="name">Your Name</label><input id="name" name="name" required>
+    <label for="email">Your Email</label><input id="email" type="email" name="email" required>
+    <label for="message">Message</label><textarea id="message" name="message" required></textarea>
+    <div style="margin-top:12px"><button class="btn" type="submit">Send Message</button></div>
+  </form>
+</section>
+</main>
+<footer>© <span id="y">2025</span> Jaswanth Selvam · Robo Rangers</footer>
+<script>document.getElementById('y').textContent=(new Date).getFullYear()</script>
+</body></html>
