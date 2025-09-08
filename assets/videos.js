@@ -1,6 +1,6 @@
 
-const API_KEY = "YOUR_YOUTUBE_API_KEY";
-const CHANNEL_ID = "YOUR_CHANNEL_ID_UCXXXX";
+const API_KEY = "AIzaSyDrvLGWZBA6bEYgzWqg5kYOOo3CZLeiEO8";
+const CHANNEL_ID = "UC9ps706fEeZp_d-bacSUvdQ";
 const MAX_PER_PAGE = 50;
 const FALLBACK_VIDEOS = [];
 function createCard(v){
