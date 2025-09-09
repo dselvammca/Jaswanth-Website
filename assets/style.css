@@ -16,21 +16,16 @@ a:hover{filter:brightness(1.12)}
 .container{max-width:1100px;margin:auto;padding:0 18px}
 
 /* Header – light blue bar (old style) */
-.header{
-  background: linear-gradient(180deg,#eaf6ff 0%, #eef7ff 100%);
-  border-bottom:1px solid rgba(0,0,0,0.06);
+/* Dark navy header */
+.header {
+  background: linear-gradient(180deg, #0b1020 0%, #111827 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:#1f2937}
-.brand span{font-size:18px}
-nav{display:flex;gap:12px;flex-wrap:wrap}
-nav a{
-  padding:8px 12px;border-radius:8px;
-  background:#ffffff;border:1px solid rgba(0,0,0,0.06);color:#111827
-}
-nav a.active{
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:#000;border-color:transparent
+
+nav a.active {
+  background: linear-gradient(90deg, #2563eb, #1e40af); /* deep blue highlight */
+  color: #fff;
+  border-color: transparent;
 }
 
 /* Titles */
