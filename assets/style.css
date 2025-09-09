@@ -1,77 +1,85 @@
-/* === Theme tokens (tweak these to change colors site-wide) === */
+/* === Theme (same look you liked) === */
 :root{
-  --bg: #0b1020;           /* page background */
-  --card: #0f172a;         /* cards/panels */
-  --ink: #e5e7eb;          /* main text on dark */
-  --muted: #9ca3af;        /* secondary text */
-  --accent: #60a5fa;       /* links/buttons */
-  --accent-2: #22d3ee;     /* secondary accent for gradients */
-  --header-tint: rgba(255,255,255,0.00); /* set to 0.15 for a lighter topbar */
+  --bg: #ffffff;          /* white page */
+  --card: #0f172a;        /* dark cards */
+  --ink: #111827;         /* dark text on white */
+  --ink-muted: #4b5563;
+  --accent: #60a5fa;      /* buttons/links */
+  --accent-2: #22d3ee;
 }
 
-/* === Base === */
+/* Base */
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--ink)}
+html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink)}
 a{color:var(--accent);text-decoration:none}
-a:hover{filter:brightness(1.15)}
+a:hover{filter:brightness(1.12)}
 .container{max-width:1100px;margin:auto;padding:0 18px}
 
-/* === Header / Nav (dark gradient, no light blue bar) === */
+/* Header – light blue bar (old style) */
 .header{
-  background:
-    radial-gradient(1200px 500px at 10% -20%, rgba(34,211,238,0.18), transparent),
-    radial-gradient(1200px 500px at 90% -20%, rgba(96,165,250,0.18), transparent);
-  backdrop-filter:saturate(120%) blur(0px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg,#eaf6ff 0%, #eef7ff 100%);
+  border-bottom:1px solid rgba(0,0,0,0.06);
 }
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:#fff}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:#1f2937}
 .brand span{font-size:18px}
 nav{display:flex;gap:12px;flex-wrap:wrap}
-nav a{padding:8px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:#fff;background:var(--header-tint)}
-nav a.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#000;border-color:transparent}
+nav a{
+  padding:8px 12px;border-radius:8px;
+  background:#ffffff;border:1px solid rgba(0,0,0,0.06);color:#111827
+}
+nav a.active{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#000;border-color:transparent
+}
 
-/* === Typography === */
+/* Titles */
 h1{font-size:30px;margin:0 0 6px}
 h2{font-size:24px;margin:10px 0}
 h3{font-size:18px;margin:10px 0}
 
-/* === Cards / Sections === */
+/* Cards (dark boxes) */
 .card{
-  background:var(--card);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:16px;
-  padding:22px;
-  margin:22px 0;
-  color:var(--muted);
+  background:var(--card); color:#cbd5e1;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px; padding:22px; margin:22px 0;
 }
 
-/* === Buttons === */
+/* Buttons */
 .btn{
   display:inline-block;padding:12px 18px;border-radius:10px;
   font-weight:600;background:var(--accent);color:#000
 }
 .btn.outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
 
-/* === Videos grid === */
+/* Video grid */
 .video-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.video-card{border:1px solid rgba(255,255,255,0.10);border-radius:14px;overflow:hidden;background:rgba(255,255,255,0.03)}
-.video-card>a{display:block;padding:10px 12px}
-.video-thumb{display:block}
-.video-thumb img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+.video-card{
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:14px;background:#ffffff;overflow:hidden
+}
+.video-thumb{display:block;background:#000}
+.video-thumb img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid rgba(0,0,0,0.06)}
+.video-title{display:block;padding:10px 12px;color:#111827}
 
-/* === Notices === */
+/* Notices */
 .success{background:#062d1c;border:1px solid #186d44;padding:12px;color:#7af3d8;margin:10px 0;border-radius:10px}
 .warning{background:#3d1d10;border:1px solid #a16207;padding:12px;color:#fde68a;margin:10px 0;border-radius:10px}
-.note{color:var(--muted);font-size:13px}
+.note{color:var(--ink-muted);font-size:13px}
 
-/* === Footer === */
-footer{margin-top:40px;border-top:1px solid rgba(255,255,255,0.08);padding:22px 0;color:var(--muted);text-align:center}
-
-/* === Responsive === */
-@media (max-width:720px){
-  .hero{grid-template-columns:1fr}
+/* Forms (bring back clean look) */
+form label{display:block;margin:10px 0 6px;color:#111827}
+input,select,textarea{
+  width:100%;padding:10px 12px;border-radius:10px;
+  border:1px solid rgba(0,0,0,0.12);background:#fff;color:#111827
 }
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(96,165,250,0.25)}
 
-/* === Utility: JS uses this to hide the help card when videos load === */
+/* Footer */
+footer{margin-top:40px;border-top:1px solid rgba(0,0,0,0.08);padding:22px 0;color:#6b7280;text-align:center}
+
+/* Responsive */
+@media (max-width:720px){ .hero{grid-template-columns:1fr} }
+
+/* Utility (security toggle for help card) */
 .hidden{display:none !important}
