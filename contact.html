@@ -1,63 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Contact · Jaswanth Selvam</title>
-  
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="assets/style.css"/>
+<form id="contactForm" action="https://formspree.io/f/YOURLIVEFORMID" method="POST" novalidate>
+  <label for="name">Full Name</label>
+  <input id="name" name="name" type="text" placeholder="Your name" required>
 
-  
-</head>
-<body>
-  
-<header class="header">
-  <div class="container topbar">
-    <a class="brand" href="index.html" aria-label="Jaswanth Selvam">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 2l3.5 7H22l-6 4.5L18 21l-6-4-6 4 2-7.5L2 9h6.5L12 2z"
-              stroke="url(#g)" stroke-width="1.3" fill="none"/>
-        <defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24">
-          <stop stop-color="#60a5fa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
-      </svg>
-      <span>Jaswanth Selvam</span>
-    </a>
-    <nav>
-      <a href="index.html" class="">Home</a>
-      <a href="about.html" class="">About</a>
-      <a href="videos.html" class="">Videos</a>
-      <a href="gallery.html" class="">Gallery</a>
-      <a href="inspirations.html" class="">Inspirations</a>
-      <a href="contact.html" class="active">Contact</a>
-    </nav>
-  </div>
-</header>
+  <label for="phone">Contact Number (with country code)</label>
+  <input id="phone" name="phone" type="tel" placeholder="+233 55 123 4567"
+         pattern="^\+?[0-9]{6,15}$" required>
 
-  <main class="container">
-    
-<h1>Contact</h1>
-<form class="card form" name="contact">
-  <div class="grid" style="grid-template-columns:1fr 1fr">
-    <div>
-      <label>Your name</label>
-      <input placeholder="Name"/>
-    </div>
-    <div>
-      <label>Email</label>
-      <input type="email" placeholder="you@example.com"/>
-    </div>
-  </div>
-  <label>Message</label>
-  <textarea rows="6" placeholder="Hello Jaswanth…"></textarea>
-  <p class="small">Static demo form. To make this live, we can connect Formspree or Google Apps Script later.</p>
+  <label for="email">Email</label>
+  <input id="email" name="_replyto" type="email" placeholder="you@example.com" required>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="6" placeholder="How can we help?" required></textarea>
+
+  <!-- This sends a copy of the email to you; Formspree routes to your inbox -->
+  <input type="hidden" name="_subject" value="New message from Jaswanth Website">
+  <input type="hidden" name="_to" value="dselvammca@gmail.com">
+
+  <button class="btn" type="submit">Send Message</button>
+  <p id="formStatus" class="note" aria-live="polite"></p>
 </form>
 
-  </main>
-  
-<footer>
-  © <span id="y"></span> Jaswanth Selvam · Robo Rangers
-</footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-
-</body>
-</html>
+<script>
+  // Light client-side validation + nicer status messages
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    const form = e.target;
+    const status = document.getElementById('formStatus');
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      status.textContent = 'Please fill all fields correctly (phone should include country code).';
+      return;
+    }
+    status.textContent = 'Sending…';
+  });
+</script>
