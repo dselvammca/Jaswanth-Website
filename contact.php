@@ -1,16 +1,39 @@
-
 <?php
-$to = "jaswanthselvam12@gmail.com";
-$name = trim($_POST['name'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$message = trim($_POST['message'] ?? '');
-if ($name === '' || $email === '' || $message === '') { http_response_code(400); echo "<!doctype html><meta charset='utf-8'><link rel='stylesheet' href='assets/style.css'><div class='container'><div class='warning card'>Missing fields. Please go back and complete the form.</div></div>"; exit; }
-$subject = "New message from Jaswanth website";
-$body = "From: $name\nEmail: $email\n\nMessage:\n$message\n\n--\nSent from jaswanth site";
-$headers = "From: Website Contact <no-reply@your-domain.com>\r\nReply-To: $email\r\n";
-$sent = @mail($to, $subject, $body, $headers);
-echo "<!doctype html><meta charset='utf-8'><link rel='stylesheet' href='assets/style.css'><div class='container'>";
-if ($sent) { echo "<div class='success card'><h3>Thank you!</h3><p>Your message has been sent successfully.</p><p><a class='btn' href='index.html'>Back to Home</a></p></div>"; }
-else { echo "<div class='warning card'><h3>Oops!</h3><p>Unable to send email from this server. Please email directly: <a href='mailto:jaswanthselvam12@gmail.com'>jaswanthselvam12@gmail.com</a>.</p><p><a class='btn' href='contact.html'>Back to Contact</a></p></div>"; }
-echo "</div>";
-?>
+// contact.php
+// Simple mail handler. Requires PHP hosting (NOT Vercel).
+
+header('Content-Type: text/html; charset=utf-8');
+
+function sanitize($s) {
+  return htmlspecialchars(trim($s), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $name    = sanitize($_POST['name'] ?? '');
+  $phone   = sanitize($_POST['phone'] ?? '');
+  $email   = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+  $message = sanitize($_POST['message'] ?? '');
+
+  if (!$name || !$phone || !$email || !$message) {
+    http_response_code(400);
+    echo "Please fill all fields correctly."; exit;
+  }
+
+  $to      = "dselvammca@gmail.com";
+  $subject = "New contact from Jaswanth Website";
+  $body    = "Name: $name\nPhone: $phone\nEmail: $email\n\nMessage:\n$message\n";
+  $headers = "From: Website <no-reply@yourdomain.com>\r\n" .
+             "Reply-To: $email\r\n" .
+             "Content-Type: text/plain; charset=UTF-8\r\n";
+
+  // For better deliverability on shared hosting you might need SMTP (PHPMailer).
+  if (mail($to, $subject, $body, $headers)) {
+    echo "Thank you! Your message has been sent.";
+  } else {
+    http_response_code(500);
+    echo "Sorry, we could not send your message. Please try again later.";
+  }
+} else {
+  http_response_code(405);
+  echo "Method not allowed.";
+}
